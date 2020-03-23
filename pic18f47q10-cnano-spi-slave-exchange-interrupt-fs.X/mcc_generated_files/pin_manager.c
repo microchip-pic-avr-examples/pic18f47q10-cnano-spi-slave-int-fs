@@ -135,8 +135,6 @@ void PIN_MANAGER_Initialize(void)
     // register default IOC callback functions at runtime; use these methods to register a custom function
     IOCAF5_SetInterruptHandler(IOCAF5_DefaultInterruptHandler);
    
-    // Enable IOCI interrupt 
-    PIE0bits.IOCIE = 1; 
     
 	
     SSP1CLKPPS = 0x13;   //RC3->MSSP1:SCK1;    

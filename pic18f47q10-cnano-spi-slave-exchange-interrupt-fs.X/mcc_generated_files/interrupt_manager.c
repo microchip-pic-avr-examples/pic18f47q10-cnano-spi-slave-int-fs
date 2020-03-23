@@ -58,10 +58,17 @@ void  INTERRUPT_Initialize (void)
 void __interrupt() INTERRUPT_InterruptManager (void)
 {
     // interrupt handler
-    if(PIE0bits.IOCIE == 1 && PIR0bits.IOCIF == 1)
+    if(INTCONbits.PEIE == 1)
     {
-        PIN_MANAGER_IOC();
-    }
+        if(PIE3bits.SSP1IE == 1 && PIR3bits.SSP1IF == 1)
+        {
+            spi1_isr();
+        } 
+        else
+        {
+            //Unhandled Interrupt
+        }
+    }      
     else
     {
         //Unhandled Interrupt
